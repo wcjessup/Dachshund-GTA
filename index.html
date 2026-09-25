@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<title>Dachshund GTA — Wiener Wanted</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%238a4b28%22/><ellipse cx=%2216%22 cy=%2216%22 rx=%2212%22 ry=%227%22 fill=%22%23c98a52%22/></svg>" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div id="app">
+  <canvas id="game" width="960" height="600"></canvas>
+
+  <!-- HUD (visible during play) -->
+  <div id="hud" class="hidden">
+    <div class="hud-top">
+      <div class="hud-pill money">💵 <span id="moneyVal">$0</span></div>
+      <div class="hud-pill timer">⏱ <span id="timeVal">2:00</span></div>
+      <div class="hud-pill heat" id="heatPill">
+        <span class="heatLabel">HEAT</span>
+        <span class="stars" id="stars"></span>
+      </div>
+    </div>
+    <div class="hud-bottom-left">
+      <div class="staminaWrap"><div class="staminaBar" id="staminaBar"></div></div>
+      <div id="hint" class="hint"></div>
+    </div>
+    <div id="bustedBanner" class="busted-banner hidden">BUSTED!</div>
+    <div id="toast" class="toast hidden"></div>
+  </div>
+
+  <!-- Title screen -->
+  <div id="titleScreen" class="screen">
+    <div class="titleCard">
+      <div class="logoWrap">
+        <canvas id="logoCanvas" width="420" height="150"></canvas>
+      </div>
+      <p class="tagline">Run the alleys. Snatch the loot. Dodge the leash law.</p>
+      <button id="startBtn" class="bigBtn">▶ Start Heist</button>
+      <div class="howto">
+        <h3>How to play</h3>
+        <ul>
+          <li><b>WASD / Arrows</b> — run around town</li>
+          <li><b>Shift</b> — sprint (watch your stamina)</li>
+          <li><b>E / Space</b> — steal from a pedestrian, hold near them</li>
+          <li><b>B</b> — bark (startles nearby pedestrians)</li>
+          <li>Hide in the <b>cardboard box</b> in the alley to shake off the cops</li>
+          <li>Steal as much cash as you can before the timer runs out — but too much heat brings the cops!</li>
+        </ul>
+      </div>
+      <div class="highscore">High Score: <span id="highScoreVal">$0</span></div>
+    </div>
+  </div>
+
+  <!-- Pause screen -->
+  <div id="pauseScreen" class="screen hidden">
+    <div class="titleCard">
+      <h1>Paused</h1>
+      <button id="resumeBtn" class="bigBtn">▶ Resume</button>
+      <button id="quitBtn" class="bigBtn secondary">■ Quit to Title</button>
+    </div>
+  </div>
+
+  <!-- Game over screen -->
+  <div id="gameOverScreen" class="screen hidden">
+    <div class="titleCard">
+      <h1 id="gameOverTitle">Time's Up!</h1>
+      <p class="goStat">You stole <span id="finalMoney">$0</span></p>
+      <p class="goStat small" id="newHighScore"></p>
+      <button id="retryBtn" class="bigBtn">↻ Run It Back</button>
+      <button id="titleBtn" class="bigBtn secondary">☰ Title Screen</button>
+    </div>
+  </div>
+
+  <!-- top-right utility buttons -->
+  <div id="utilBar" class="hidden">
+    <button id="muteBtn" title="Mute (M)">🔊</button>
+    <button id="pauseBtn" title="Pause (Esc)">❚❚</button>
+  </div>
+
+  <!-- Touch controls -->
+  <div id="touchControls" class="hidden">
+    <div id="joystick"><div id="joystickKnob"></div></div>
+    <div id="actionButtons">
+      <button id="btnBark">🐾</button>
+      <button id="btnAction">✋</button>
+      <button id="btnSprint">⚡</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/utils.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/sprites.js"></script>
+<script src="js/city.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/input.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
